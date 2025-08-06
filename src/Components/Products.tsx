@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import shopify from '../assets/shopify.png'
-import './Products.css'; 
+import shopify from '../assets/shopify.png';
+import './Products.css';
 
 interface Product {
   id: number;
@@ -48,10 +49,9 @@ const Products = () => {
 
   return (
     <div className="ecommerce-container">
-      
       <nav className="navbar">
         <div className="nav-container">
-          <img src={shopify} alt="" />
+          <img src={shopify} alt="Shopify Logo" />
           <div className="search-box">
             <input
               type="text"
@@ -63,14 +63,12 @@ const Products = () => {
           </div>
           <div className="nav-links">
             <a href="#">Cart (0)</a>
-            <a href="#">Login</a>
+            <Link to="/Login">Login</Link>
           </div>
         </div>
       </nav>
 
-      {/* Main Content */}
       <main className="main-content">
-        {/* Category Filters */}
         <div className="category-filters">
           {categories.map((category) => (
             <button
@@ -85,7 +83,6 @@ const Products = () => {
           ))}
         </div>
 
-        {/* Product Grid */}
         {loading ? (
           <div className="loading-spinner"></div>
         ) : (
@@ -111,7 +108,6 @@ const Products = () => {
         )}
       </main>
 
-      {/* Footer */}
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-section">
@@ -121,9 +117,9 @@ const Products = () => {
           <div className="footer-section">
             <h4>Quick Links</h4>
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Products</a></li>
-              <li><a href="#">About Us</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/products">Products</Link></li>
+              <li><Link to="/about">About Us</Link></li>
             </ul>
           </div>
           <div className="footer-section">
