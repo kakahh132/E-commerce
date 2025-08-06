@@ -1,21 +1,31 @@
-import  { useState } from 'react';
+import { useState, ChangeEvent, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
+interface FormData {
+  email: string;
+  password: string;
+}
+
+interface FormErrors {
+  email: string;
+  password: string;
+}
+
 const Login = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     email: '',
     password: '',
   });
 
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<FormErrors>({
     email: '',
     password: '',
   });
 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -23,7 +33,7 @@ const Login = () => {
     });
   };
 
-  const validateForm = () => {
+  const validateForm = (): boolean => {
     let valid = true;
     const newErrors = { ...errors };
 
@@ -51,7 +61,7 @@ const Login = () => {
     return valid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
       alert('Login successful!');
