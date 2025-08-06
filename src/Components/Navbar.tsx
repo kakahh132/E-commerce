@@ -1,4 +1,3 @@
-import React from 'react';
 import shopify from '../assets/shopify.png';
 import './Navbar.css'; // We'll create this next
 

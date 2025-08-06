@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
@@ -55,7 +55,7 @@ const Login = () => {
     e.preventDefault();
     if (validateForm()) {
       alert('Login successful!');
-      navigate('/Products'); // Redirect to products page after login
+      navigate('/Products'); 
     }
   };
 
